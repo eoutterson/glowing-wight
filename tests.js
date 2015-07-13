@@ -123,3 +123,41 @@ function stockPrices(stockPricesYesterday){
   return maxProfit;
 }
 console.log(stockPrices([1,2,3,-40,5,-80,10]));
+
+function getProductsExceptAtIndex(intArray){
+  var results = [];
+  results[0]=1;
+  //loop over all of the values before each index
+  for (var i = 1; i < intArray.length; i++){
+    results[i]=results[i-1]*intArray[i-1];
+  }
+  var current = 1;
+  //loop over all of the values after the index
+  for (var i = intArray.length-2; i>-1 ;i--){
+    current *= intArray[i+1]
+    results[i]*=current;
+  }
+  return results;
+}
+
+// console.log(getProductsExceptAtIndex([1,7,3,4]));
+
+function largestProductOfThree(arr){
+  if(arr.length<3) return null;
+  var largest = Math.max(arr[0],arr[1]);
+  var smallest = Math.min(arr[0],arr[1]);
+  var smallestProductOfTwo = arr[0]*arr[1];
+  var largestProductOfTwo = arr[0]*arr[1];
+  var largestProductOfThree = arr[0]*arr[1]*arr[2];
+  for (var i = 2; i < arr.length; i ++){
+    largestProductOfThree = Math.max(largestProductOfTwo*arr[i], smallestProductOfTwo*arr[i],largestProductOfThree);
+
+    smallestProductOfTwo = Math.min(smallest * arr[i], smallestProductOfTwo);
+    largestProductOfTwo = Math.max(largest * arr[i], largestProductOfTwo);
+
+    if (arr[i]>largest) largest = arr[i];
+    if (arr[i]<smallest) smallest = arr[i];
+  }
+  return largestProductOfThree;
+}
+console.log(largestProductOfThree([1,2,3]))
