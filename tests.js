@@ -183,3 +183,23 @@ function isSingleRiffle(half1, half2, shuffledDeck){
   return true;
 }
 console.log(isSingleRiffle([1],[2],[2,1]));
+
+function rand5(){
+  return Math.ceil(Math.random()*5);
+}
+
+function rand7(){
+  while(true){
+    //do the die rolls
+    var roll1=rand5();
+    var roll2=rand5();
+    //each die represents a value in the base 5 number system
+    //so we get a value between 1 and 25
+    var outcome = (roll1-1)*5+(roll2-1)+1;
+    //for a uniform distribution, we ignore the range between
+    //7*3 and 7*4 because 25 is between them
+    if (outcome <= 21){
+      return outcome%7+1;
+    }
+  }
+}
