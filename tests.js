@@ -151,13 +151,35 @@ function largestProductOfThree(arr){
   var largestProductOfThree = arr[0]*arr[1]*arr[2];
   for (var i = 2; i < arr.length; i ++){
     largestProductOfThree = Math.max(largestProductOfTwo*arr[i], smallestProductOfTwo*arr[i],largestProductOfThree);
-
     smallestProductOfTwo = Math.min(smallest * arr[i], smallestProductOfTwo);
     largestProductOfTwo = Math.max(largest * arr[i], largestProductOfTwo);
-
     if (arr[i]>largest) largest = arr[i];
     if (arr[i]<smallest) smallest = arr[i];
   }
   return largestProductOfThree;
 }
 console.log(largestProductOfThree([1,2,3]))
+
+function isSingleRiffle(half1, half2, shuffledDeck){
+  half1Index = 0;
+  half2Index = 0;
+  half1MaxIndex = half1.length - 1;
+  half2MaxIndex = half2.length - 1;
+  for (var i = 0; i < shuffledDeck.length;i++){
+    //if we still have cards in half one, and the "top" card is the same as
+    //the indexed card in the shuffled index
+    if(half1Index <= half1MaxIndex && half1[half1Index] === shuffledDeck[i]){
+      half1Index++;
+    //if we still have cards in half two, and the "top" card is the same as
+    //the indexed card in the shuffled index
+    } else if(half2Index <= half2MaxIndex && half2[half2Index] === shuffledDeck[i]){
+      half2Index++;
+    } else {
+    //if the "top" card in shuffled deck doesn't match either, then not a single riffle
+      return false
+    }
+  }
+  //All cards have been accounted for, so this is a true riffle
+  return true;
+}
+console.log(isSingleRiffle([1],[2],[2,1]));
