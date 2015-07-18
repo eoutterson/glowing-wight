@@ -184,6 +184,7 @@ function isSingleRiffle(half1, half2, shuffledDeck){
 }
 // console.log(isSingleRiffle([1],[2],[2,1]));
 
+
 function rand5(){
   return Math.ceil(Math.random()*5);
 }
