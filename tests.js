@@ -108,7 +108,7 @@ function countingSort(scoreList){
   return results;
 }
 
-console.log(countingSort([1,2,30,2,2,2]));
+// console.log(countingSort([1,2,30,2,2,2]));
 
 function stockPrices(stockPricesYesterday){
   var minPrice = stockPricesYesterday[0];
@@ -122,7 +122,7 @@ function stockPrices(stockPricesYesterday){
   }
   return maxProfit;
 }
-console.log(stockPrices([1,2,3,-40,5,-80,10]));
+// console.log(stockPrices([1,2,3,-40,5,-80,10]));
 
 function getProductsExceptAtIndex(intArray){
   var results = [];
@@ -158,8 +158,8 @@ function largestProductOfThree(arr){
   }
   return largestProductOfThree;
 }
-console.log(largestProductOfThree([1,2,3]))
-
+// console.log(largestProductOfThree([1,2,3]))
+function(){}()
 function isSingleRiffle(half1, half2, shuffledDeck){
   half1Index = 0;
   half2Index = 0;
@@ -182,7 +182,7 @@ function isSingleRiffle(half1, half2, shuffledDeck){
   //All cards have been accounted for, so this is a true riffle
   return true;
 }
-console.log(isSingleRiffle([1],[2],[2,1]));
+// console.log(isSingleRiffle([1],[2],[2,1]));
 
 function rand5(){
   return Math.ceil(Math.random()*5);
@@ -203,3 +203,31 @@ function rand7(){
     }
   }
 }
+
+function mergeMeetings(meetingArr){
+  var mergedMeetings = [];
+  //sort the meetings
+  meetingArr.sort(function(a,b){return a[0]-b[0];});
+  var startMeeting = meetingArr[0];
+  for (var i = 1; i<meetingArr.length; i++){
+    //if the current meeting overlaps with the next, combine them
+    if (startMeeting[1]>=meetingArr[i][0]){
+      startMeeting[1]=Math.max(meetingArr[i][1], startMeeting[1]);
+    }else{
+      //if the current meeting doesn't overlap, push it to our list
+      mergedMeetings.push(startMeeting);
+      startMeeting=meetingArr[i];
+    }
+  }
+  mergedMeetings.push(startMeeting);
+  return mergedMeetings;
+}
+
+console.log(mergeMeetings([[1,2],[2,3],[5,7],[5,8],[1,3],[0,4],[9,12]]));
+// console.log(mergeMeetings([[1,2],[0,4]]));
+
+
+if ("a" in window){
+  var a = 21;
+}
+console.log(a);
