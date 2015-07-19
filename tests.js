@@ -234,77 +234,47 @@ if ("a" in window){
 console.log(a);
 
 
-01.
 // This doesn't work like you might think, because the value of `i` never
-02.
 // gets locked in. Instead, every link, when clicked (well after the loop
-03.
 // has finished executing), alerts the total number of elements, because
-04.
 // that's what the value of `i` actually is at that point.
-05.
- 
-06.
+
 var elems = document.getElementsByTagName( 'a' );
-07.
- 
-08.
 for ( var i = 0; i < elems.length; i++ ) {
-09.
- 
-10.
-elems[ i ].addEventListener( 'click', function(e){
-11.
-e.preventDefault();
-12.
-alert( 'I am link #' + i );
-13.
-}, 'false' );
-14.
- 
-15.
+  elems[ i ].addEventListener( 'click', function(e){
+    e.preventDefault();
+    alert( 'I am link #' + i );
+  }, 'false' );
 }
-16.
- 
-17.
+
 // This works, because inside the IIFE, the value of `i` is locked in as
-18.
 // `lockedInIndex`. After the loop has finished executing, even though the
-19.
 // value of `i` is the total number of elements, inside the IIFE the value
-20.
 // of `lockedInIndex` is whatever the value passed into it (`i`) was when
-21.
 // the function expression was invoked, so when a link is clicked, the
-22.
 // correct value is alerted.
-23.
- 
-24.
+
 var elems = document.getElementsByTagName( 'a' );
-25.
- 
-26.
 for ( var i = 0; i < elems.length; i++ ) {
-27.
- 
-28.
-(function( lockedInIndex ){
-29.
- 
-30.
-elems[ i ].addEventListener( 'click', function(e){
-31.
-e.preventDefault();
-32.
-alert( 'I am link #' + lockedInIndex );
-33.
-}, 'false' );
-34.
- 
-35.
-})( i );
-36.
- 
-37.
+  (function( lockedInIndex ){
+    elems[ i ].addEventListener( 'click', function(e){
+      e.preventDefault();
+      alert( 'I am link #' + lockedInIndex );
+    }, 'false' );
+  })( i );
 }
+
+
+Object:  'object'
+Array: 'object'
+Function:  'function'
+String:  'string'
+Number:  'number'
+Boolean: 'boolean'
+Symbol: 'symbol'
+null:  'object'
+undefined: 'undefined'
+
+// Whole-script strict mode syntax
+"use strict";
+var v = "Hi!  I'm a strict mode script!";
