@@ -278,3 +278,23 @@ undefined: 'undefined'
 // Whole-script strict mode syntax
 "use strict";
 var v = "Hi!  I'm a strict mode script!";
+
+function strict(){
+  // Function-level strict mode syntax
+  'use strict';
+  function nested() { return "And so am I!"; }
+  return "Hi!  I'm a strict mode function!  " + nested();
+}
+function notStrict() { return "I'm not strict."; }
+
+function mergeSortedArrays(array1, array2){
+  var resultArr = [];
+  while(array1.length > 0 && array2.length > 0){
+    if(array1[0] >= array2[0]){
+      resultArr.push(array2.shift());
+    }else{
+      resultArr.push(array1.shift());
+    }
+  }
+  return resultArr.concat(array1, array2);
+}
