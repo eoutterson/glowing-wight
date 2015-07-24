@@ -159,7 +159,7 @@ function largestProductOfThree(arr){
   return largestProductOfThree;
 }
 // console.log(largestProductOfThree([1,2,3]))
-function(){}()
+// function(){}()
 function isSingleRiffle(half1, half2, shuffledDeck){
   half1Index = 0;
   half2Index = 0;
@@ -228,10 +228,10 @@ console.log(mergeMeetings([[1,2],[2,3],[5,7],[5,8],[1,3],[0,4],[9,12]]));
 // console.log(mergeMeetings([[1,2],[0,4]]));
 
 
-if ("a" in window){
-  var a = 21;
-}
-console.log(a);
+// if ("a" in window){
+//   var a = 21;
+// }
+// console.log(a);
 
 
 // This doesn't work like you might think, because the value of `i` never
@@ -239,13 +239,13 @@ console.log(a);
 // has finished executing), alerts the total number of elements, because
 // that's what the value of `i` actually is at that point.
 
-var elems = document.getElementsByTagName( 'a' );
-for ( var i = 0; i < elems.length; i++ ) {
-  elems[ i ].addEventListener( 'click', function(e){
-    e.preventDefault();
-    alert( 'I am link #' + i );
-  }, 'false' );
-}
+// var elems = document.getElementsByTagName( 'a' );
+// for ( var i = 0; i < elems.length; i++ ) {
+//   elems[ i ].addEventListener( 'click', function(e){
+//     e.preventDefault();
+//     alert( 'I am link #' + i );
+//   }, 'false' );
+// }
 
 // This works, because inside the IIFE, the value of `i` is locked in as
 // `lockedInIndex`. After the loop has finished executing, even though the
@@ -254,26 +254,26 @@ for ( var i = 0; i < elems.length; i++ ) {
 // the function expression was invoked, so when a link is clicked, the
 // correct value is alerted.
 
-var elems = document.getElementsByTagName( 'a' );
-for ( var i = 0; i < elems.length; i++ ) {
-  (function( lockedInIndex ){
-    elems[ i ].addEventListener( 'click', function(e){
-      e.preventDefault();
-      alert( 'I am link #' + lockedInIndex );
-    }, 'false' );
-  })( i );
-}
+// var elems = document.getElementsByTagName( 'a' );
+// for ( var i = 0; i < elems.length; i++ ) {
+//   (function( lockedInIndex ){
+//     elems[ i ].addEventListener( 'click', function(e){
+//       e.preventDefault();
+//       alert( 'I am link #' + lockedInIndex );
+//     }, 'false' );
+//   })( i );
+// }
 
 
-Object:  'object'
-Array: 'object'
-Function:  'function'
-String:  'string'
-Number:  'number'
-Boolean: 'boolean'
-Symbol: 'symbol'
-null:  'object'
-undefined: 'undefined'
+// Object:  'object'
+// Array: 'object'
+// Function:  'function'
+// String:  'string'
+// Number:  'number'
+// Boolean: 'boolean'
+// Symbol: 'symbol'
+// null:  'object'
+// undefined: 'undefined'
 
 // Whole-script strict mode syntax
 "use strict";
@@ -297,4 +297,34 @@ function mergeSortedArrays(array1, array2){
     }
   }
   return resultArr.concat(array1, array2);
+}
+var unknownbias = .000001;
+function unfairCoin(){
+  var coin;
+  if (Math.random() > unknownbias){
+    coin = "heads";
+  }else{
+    coin = "tails";
+  }
+  return coin;
+}
+
+function fairCoin(){
+  var flipOne, flipTwo;
+  do{
+    flipOne = unfairCoin();
+    flipTwo = unfairCoin();
+  } while(flipOne===flipTwo)
+  return flipOne;
+}
+console.log(fairCoin());
+
+function car(){
+  var gas = 10;
+
+  return function driveCar(){
+    gas--;
+    console.log(gas);
+  }
+
 }
