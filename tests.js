@@ -328,3 +328,21 @@ function car(){
   }
 
 }
+
+native object-
+object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment.
+
+Examples Object, Date, Math, parseInt, eval, string methods like 
+indexOf
+and
+replace, array methods, ...
+
+host object - object supplied by the host environment to complete the execution environment of ECMAScript.
+
+Examples (in a browser environment): window, document, location, history, XMLHttpRequest, setTimeout, getElementsByTagName, querySelectorAll, ...
+
+querySelectorAll
+
+"stefsds".index
+
+getElementsByTagName
