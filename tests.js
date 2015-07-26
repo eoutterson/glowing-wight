@@ -329,20 +329,58 @@ function car(){
 
 }
 
-native object-
-object in an ECMAScript implementation whose semantics are fully defined by this specification rather than by the host environment.
+var plays = ['rock', 'paper', 'scissor'];
+function rockpaperscissors(n){
+  var result = [];
+  if(n === 0){
+    return [[]];
+  }
+  var games = rockpaperscissors(n-1);
+  for(var i = 0; i < 3; i++){
+    temp = games.slice()
+    for(var j = 0; j < temp.length; j++){
+      temp[j] = [plays[i]].concat(temp[j]);
+    }
+    result = result.concat(temp);
+  }
+  return result;
+}
+undefined
 
-Examples Object, Date, Math, parseInt, eval, string methods like 
-indexOf
-and
-replace, array methods, ...
+string, number, boolean, null, undefined, symbol 
+var o = {};
+Object.defineProperty(o,'a',{value:35,configurable:true});
+delete o.a;
 
-host object - object supplied by the host environment to complete the execution environment of ECMAScript.
+JavaScript Object Notation, is an open standard format that uses human-readable text to transmit data objects consisting of attribute–value pairs.
 
-Examples (in a browser environment): window, document, location, history, XMLHttpRequest, setTimeout, getElementsByTagName, querySelectorAll, ...
+HTMLCollection and HTMLMetaElement are both live
+document.getElementsByTagNameNS --> function HTMLCollection();
+document.getElementsByTagName   --> function HTMLCollection();
+document.getElementsByName      --> function HTMLCollection();
+document.getElementsByClassName --> function HTMLCollection();
 
-querySelectorAll
+static NodeList - (in firefox, but live in Chrome)
+document.querySelectorAll --> function NodeList();
+live NodeList
+Node.childNodes --> function NodeList();
 
-"stefsds".index
 
-getElementsByTagName
+var allDivs = document.getElementsByTagName('div');
+var body = document.getElementsByTagName('body')[0]
+
+for (var i = 0; i < allDivs.length; i++) {
+  body.appendChild(document.createElement('div'));
+}
+
+console.log('a');
+setTimeout(function() { console.log('foo')}, 1000);
+setTimeout(function() { console.log('bar')}, 0);
+console.log('b');
+
+Table 3: Taps for Maximum-Length LFSR Counters
+n XNOR from n XNOR from n XNOR from n XNOR from
+
+
+
+
