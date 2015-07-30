@@ -201,6 +201,8 @@ int mod(int a, int b) {
 }
 
 
+
+
 public class Q_04 {
 
   public static int div(int a, int b) {
@@ -218,6 +220,24 @@ public class Q_04 {
   }
 
 }
+
+int sqrt(int n) {
+  return sqrt_helper(n, 1, n);
+} 
+
+int sqrt_helper(int n, int min, int max) {
+  if (max < min) return -1; // no square root
+  int guess = (min + max) / 2;
+  if (guess * guess == n) { // found it!
+    return guess;
+  } else if (guess * guess < n) { // too low
+    return sqrt_helper(n, guess + 1, max); // try higher
+  } else { // too high
+    return sqrt_helper(n, 1, guess - 1); // try lower
+  }
+}
+
+
 
 public class Q_05 {
 
@@ -237,13 +257,26 @@ public class Q_05 {
           return sqrt_helper(n, 1, guess - 1); // try lower
         }
       }
-      
-      
 
-      
+
+
+
       public static void main(String[] args) {
         System.out.println(sqrt(26));
       }
+
+    }
+
+
+    int sqrt(int n) {
+      for (int guess = 1; guess * guess <= n; guess++) {
+        if (guess * guess == n) {
+          return guess;
+        }
+      }
+      return -1;
+    }
+
 
     }
 
@@ -257,7 +290,7 @@ public class Q_05 {
         }
         return -1;
       }
-      
+
       public static void main(String[] args) {
         System.out.println(sqrt(26));
       }
@@ -265,7 +298,7 @@ public class Q_05 {
     }
 
     public class Q_09 {
-      
+
       public static int[] copyArray(int[] array) {
         int[] copy = new int[0];
         for (int value : array) {
@@ -314,11 +347,11 @@ public class Q_05 {
     public class Q_11 {
 
       public static int numChars = 26;
-      
+
       public static void printSortedStrings(int remaining) {
         printSortedStrings(remaining, "");
       }
-      
+
       public static void printSortedStrings(int remaining, String prefix) {
         if (remaining == 0) {
           System.out.println(prefix);
@@ -329,7 +362,7 @@ public class Q_05 {
           }
         }
       }
-      
+
       public static boolean isInOrder(String s) {
         for (int i = 1; i < s.length(); i++) {
           int prev = ithLetter(s.charAt(i - 1));
@@ -340,11 +373,11 @@ public class Q_05 {
         }
         return true;
       }
-      
+
       public static char ithLetter(int i) {
         return (char) (((int) 'a') + i);
       }
-      
+
       public static void main(String[] args) {
         printSortedStrings(3);
       }
@@ -356,7 +389,7 @@ public class Q_05 {
         int low = 0;
         int high = a.length - 1;
         int mid;
-        
+
         while (low <= high) {
           mid = (low + high) / 2;
           if (a[mid] < x) {
@@ -369,7 +402,7 @@ public class Q_05 {
         }
         return -1;
       }
-      
+
       public static void mergesort(int[] array) {
         int[] helper = new int[array.length];
         mergesort(array, helper, 0, array.length - 1);
