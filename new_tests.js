@@ -14,6 +14,7 @@ for(var i = 0; i < 5; i++){
   })(i);
 }
 
+console.log("this is a test");
 function reverse (str) {
   if (str === "") {
     return "";
@@ -22,6 +23,8 @@ function reverse (str) {
   }
 }
 
+var replaced = str.split(' ').join('%20');
+var replaced = str.replace(/ /g, '%20');
 
 var hello = {
   name: 'you',
@@ -115,3 +118,11 @@ Promise Combination
 Meta-Programming
 Proxying
 Reflection
+
+
+function add(a, b) {
+  return a + b;
+}
+
+var curried = curry(add);
+console.log( curried(1)(2) );
