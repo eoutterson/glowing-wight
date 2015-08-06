@@ -127,14 +127,18 @@
 // var curried = curry(add);
 // console.log( curried(1)(2) );
 
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
-console.log(Math.floor(Math.random()*101));
+var rob = function(nums) {
+    if (nums===undefined||nums.length===0){
+        return 0;
+    }
+    var n = nums.length;
+    var dp = [];
+    dp[0]=0;
+    dp[1]=nums[0];
+    for (var i = 2 ; i<n+1;i++){
+        dp[i]=Math.max(dp[i-1],dp[i-2]+nums[i-1]);
+    }
+    console.log("test");
+    return dp[n];
+};
+console.log(rob([1,5,7,20]));
