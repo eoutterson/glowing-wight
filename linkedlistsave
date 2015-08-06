@@ -1,0 +1,96 @@
+/*
+ * Implement a linked list using the pseudoclassical instantiation pattern.
+ *
+ * Your linked list should have methods called "addToTail", "removeHead", and "contains."
+ *
+ */
+
+// EXAMPLE USAGE:
+// var list = new LinkedList();
+// list.tail;         //yields 'null'
+// list.addToTail(4);
+// list.addToTail(5);
+// list.head.value;   //yields '4';
+// list.contains(5);  //yields 'true';
+// list.contains(6);  //yields 'false';
+// list.removeHead(); //yields '4'
+// list.tail.value;   //yields '5';
+
+
+var LinkedList = function(val){
+  //fill me in!
+  this.head = null;
+  this.tail = null;
+};
+
+//write methods here!
+
+LinkedList.prototype.addToTail = function(val){
+  var newTailNode = LinkedList.prototype.makeNode(val, null);
+  var oldTail;
+  if(this.head === null){
+    this.head = newTailNode;
+  };
+  if(this.tail===null){
+    this.tail=newTailNode;
+  }else{
+    this.tail.next=newTailNode;
+    this.tail=newTailNode; 
+  }
+
+};
+
+LinkedList.prototype.removeHead = function(){
+  if(this.head !== null){
+    var oldHead=this.head;
+    if(this.head===this.tail){
+      this.tail=null;
+    }
+    this.head =this.head.next;
+    return oldHead.value;
+  }
+};
+
+LinkedList.prototype.contains = function(target){
+  // var found=false;
+  var searchNode=this.head;
+  while(searchNode!==null){
+    if(searchNode.value===target){
+      // var found =true;
+      return true;
+    }else{
+      searchNode=searchNode.next
+    }
+  }
+  return false;
+};
+
+LinkedList.prototype.makeNode = function(val, next){
+  var node = {};
+  node.value=val;
+  node.next = next;
+  return node;
+};
+
+// var list = new LinkedList();
+// list.tail;         //yields 'null'
+// list.addToTail(4);
+// console.log(list.tail);
+// list.addToTail(5);
+// console.log(list.head);
+// list.head.value;   //yields '4';
+// list.removeHead();
+// console.log(list.head);console.log(list.tail);
+// list.removeHead();
+// console.log(list.head);console.log(list.tail);
+// console.log(list.contains(5));  //yields 'true';
+// console.log(list.contains(6));  //yields 'false';
+// console.log(list.removeHead()); //yields '4'
+// console.log(list.tail.value);   //yields '5';
+var list = new LinkedList();
+list.addToTail(4);
+console.log(list.head.value);
+console.log(list.tail.value);
+list.removeHead();
+console.log(list.head);
+console.log(list.tail);
