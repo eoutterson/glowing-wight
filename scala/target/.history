@@ -1,4 +1,0 @@
-console
-scalac -version
-sbt
-brew install scala
